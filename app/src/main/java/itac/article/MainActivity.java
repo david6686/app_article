@@ -1,5 +1,7 @@
 package itac.article;
 
+import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -45,6 +47,12 @@ public class MainActivity extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
+        }
+
+        if(id==R.id.action_alert){
+            Intent gotoalert = new Intent();//要跳轉頁面要用的物件Intent      並new 出一個實體
+            gotoalert.setClass(MainActivity.this, alert.class);
+            startActivity(gotoalert);//從MainActivity.this   跳轉到Second
         }
 
         return super.onOptionsItemSelected(item);
