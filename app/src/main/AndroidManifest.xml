@@ -23,6 +23,7 @@
             android:name=".alert"
              >
         </activity>
+        <activity android:name=".login"></activity>
 
     </application>
 
