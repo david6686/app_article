@@ -1,5 +1,9 @@
 package itac.article;
-
+//變數命名 InputPassword 物件+用途
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -11,8 +15,11 @@ import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -26,6 +33,16 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+        //獲取登入資料
+        SharedPreferences LoginData=getSharedPreferences("login",MODE_PRIVATE);
+        String username= LoginData.getString("Username", "");
+
+        if (username.equals("")){
+            Intent gotoalert = new Intent();//要跳轉頁面要用的物件Intent      並new 出一個實體
+            gotoalert.setClass(MainActivity.this, login.class);
+            startActivity(gotoalert);//從MainActivity.this   跳轉到Second
+
+        }
     }
 
     @Override
@@ -45,6 +62,12 @@ public class MainActivity extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
+        }
+
+        if(id==R.id.action_alert){
+            Intent gotoalert = new Intent();//要跳轉頁面要用的物件Intent      並new 出一個實體
+            gotoalert.setClass(MainActivity.this, alert.class);
+            startActivity(gotoalert);//從MainActivity.this   跳轉到Second
         }
 
         return super.onOptionsItemSelected(item);
