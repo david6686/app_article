@@ -1,5 +1,6 @@
 package itac.article;
 //變數命名 InputPassword 物件+用途
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
         //獲取登入資料
         SharedPreferences LoginData=getSharedPreferences("login",MODE_PRIVATE);
         String username= LoginData.getString("Username", "");
@@ -41,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
             Intent gotoalert = new Intent();//要跳轉頁面要用的物件Intent      並new 出一個實體
             gotoalert.setClass(MainActivity.this, login.class);
             startActivity(gotoalert);//從MainActivity.this   跳轉到Second
+            finish();//結束這個Activate
 
         }
     }
@@ -65,9 +68,10 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if(id==R.id.action_alert){
-            Intent gotoalert = new Intent();//要跳轉頁面要用的物件Intent      並new 出一個實體
+            Intent gotoalert = new Intent();//要跳轉頁面要用的物件Intent,並new 出一個實體
             gotoalert.setClass(MainActivity.this, alert.class);
             startActivity(gotoalert);//從MainActivity.this   跳轉到Second
+
         }
 
         return super.onOptionsItemSelected(item);
