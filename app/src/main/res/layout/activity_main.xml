@@ -24,7 +24,7 @@
                 layout="@layout/tool_bar"
                 />
         </android.support.design.widget.AppBarLayout>
-        <!--add new FrameLayout-->
+        <!--add new FrameLayout 這裏只是先設一個 之後再依需要改變layout-->
         <FrameLayout
             android:id="@+id/frame"
             android:layout_width="match_parent"
