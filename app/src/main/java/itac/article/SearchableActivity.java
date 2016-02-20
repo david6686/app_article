@@ -21,7 +21,7 @@ public class SearchableActivity extends Activity {
     }
 
     private void handleIntent(Intent intent) {
-
+//這裏也許就是沒有跳出輸入文字的原因，可能需要新增功能
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             String query = intent.getStringExtra(SearchManager.QUERY);
             //use the query to search your data somehow
