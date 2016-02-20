@@ -16,4 +16,5 @@
     <string name="spam_string">Spams</string>
     <string name="closeDrawer">Navigation View</string>
     <string name="openDrawer">Navigation View Closed</string>
+    <string name="search_title">search title</string>
 </resources>
