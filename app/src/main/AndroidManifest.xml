@@ -20,7 +20,7 @@
         </activity>
         <!-- Searchable -->
         <activity
-            android:name=".Searchable_Activity"
+            android:name=".SearchableActivity"
             android:theme="@style/Theme.AppCompat.Light"
             android:launchMode="singleTop" >
             <intent-filter>
@@ -40,7 +40,6 @@
         <meta-data
             android:name="android.app.default_searchable"
             android:value=".SearchableActivity" />
-
         <activity
             android:name=".alert"
              >
