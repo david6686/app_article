@@ -32,6 +32,12 @@
 
         </FrameLayout>
 
+        <!--listview-->
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/newslist" />
+
         <!--<include layout="@layout/content_main" />-->
 
         <android.support.design.widget.FloatingActionButton android:id="@+id/fab"
