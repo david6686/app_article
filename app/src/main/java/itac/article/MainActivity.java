@@ -21,22 +21,46 @@ import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import android.widget.Toast;
+import itac.article.itac.article.data.LinkItem;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 
 public class MainActivity extends AppCompatActivity {
     //Defining Variables for drawer
     private Toolbar toolbar;
     private NavigationView navigationView;
     private DrawerLayout drawerLayout;
-    // list variable
-    //不知道為什麼string "0"  那個印不出來
+    // listview variable
     private ListView listView;
-    private String[] list = {"0","news1","news2","news3","news4","new5","new6","new7","new8","new9","new10"};
-    private String[] URLname = {"0","URL1","URL2","URL3","URL4","URL5","URL6","URL7","URL8","URL9","URL10"};
-    private ArrayAdapter<String> listAdapter;
+    private SimpleAdapter listAdapter;
+
+
+    public List<Map<String,String>> prepareData(){
+
+        List<Map<String,String>> items = new ArrayList<Map<String,String>>();
+        for(int i=1;i<=10;++i) {
+            Map<String,String> item = new HashMap<>();
+            item.put("title","news"+i);
+            item.put("url", "URL" + i);
+            //自己加的
+            items.add(item);
+       //     items.add(new LinkItem("news"+i, "URL"+i));
+        }
+
+        return items;
+
+//        //不知道為什麼string "0"  那個印不出來
+  //      public String[] url= {"0","news1","news2","news3","news4","new5","new6","new7","new8","new9","new10"};;
+    //    public String[] title= {"0","URL1","URL2","URL3","URL4","URL5","URL6","URL7","URL8","URL9","URL10"};;
 
 
 
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -138,13 +162,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         //listview(oneline)
+
         listView = (ListView)findViewById(R.id.newslist);
-        listAdapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1,list);
-        listView.setAdapter(listAdapter);
+        //SimpleAdapter(Context context, List<? extends Map<String, ?>> data, int resource, String[] from, int[] to)
+
+        listAdapter = new SimpleAdapter(this,prepareData(),android.R.layout.simple_list_item_2,new String[]{"title","url"},new int[]{android.R.id.text1,android.R.id.text2});
+        //listView.setAdapter(listAdapter);
+        listView.setAdapter( listAdapter );
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getApplicationContext(), "URL:" + list[position], Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "URL:", Toast.LENGTH_SHORT).show();
             }
         });
         //// TODO: 16/3/11  自製 simple_list_item_2  先從1 開始
