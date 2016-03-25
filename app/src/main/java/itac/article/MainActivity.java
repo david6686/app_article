@@ -166,13 +166,19 @@ public class MainActivity extends AppCompatActivity {
         listView = (ListView)findViewById(R.id.newslist);
         //SimpleAdapter(Context context, List<? extends Map<String, ?>> data, int resource, String[] from, int[] to)
 
-        listAdapter = new SimpleAdapter(this,prepareData(),android.R.layout.simple_list_item_2,new String[]{"title","url"},new int[]{android.R.id.text1,android.R.id.text2});
+        listAdapter = new SimpleAdapter(this,prepareData(),R.layout.news_list_layout,new String[]{"title","url"},new int[]{R.id.text1,R.id.text2});
         //listView.setAdapter(listAdapter);
+        /*
+        Intent gotonews= new Intent();
+        gotonews.setClass(MainActivity.this,)
+        */
+        //TODO:make the page for news(title, content)
         listView.setAdapter( listAdapter );
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Toast.makeText(getApplicationContext(), "URL:", Toast.LENGTH_SHORT).show();
+
             }
         });
         //// TODO: 16/3/11  自製 simple_list_item_2  先從1 開始
