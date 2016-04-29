@@ -179,10 +179,9 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Toast.makeText(getApplicationContext(), "URL:", Toast.LENGTH_SHORT).show();
                 setContentView(R.layout.content_news);
-
+        //TODO:目前需要了解activity的生存週期，返回鍵上一頁功能，頁面跳轉，新頁面的內容
             }
         });
-        //// TODO: 16/3/11  自製 simple_list_item_2  先從1 開始
 
         //獲取登入資料
         SharedPreferences LoginData=getSharedPreferences("login",MODE_PRIVATE);
